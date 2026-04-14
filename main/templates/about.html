@@ -1,0 +1,72 @@
+<!-- ABOUT SECTION -->
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+<section id="about" class="container mt-5">
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6" data-aos="fade-right">
+            <h2>About Errors2Experts</h2>
+            <p>
+                <strong>Errors2Experts</strong> is a professional IT training institute committed to delivering 
+                high-quality, industry-focused courses. We provide career-oriented programs designed 
+                to transform beginners into skilled professionals through structured learning 
+                and practical exposure.
+            </p>
+            <p>
+                Our courses are handled by experienced corporate trainers who bring real-world 
+                industry knowledge into the classroom. We focus not only on technical skills 
+                but also on building confidence, problem-solving ability, and career growth 
+                for every student.
+            </p>
+            <p>
+                We also provide internship opportunities to give students real-time project 
+                experience and help them understand industry standards.
+            </p>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+            <img src="{% static "images/e2elogo.png" %}"
+                 class="img-fluid rounded shadow" alt="About Us Image">
+        </div>
+    </div>
+
+    <!-- What You Will Gain -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 order-md-2" data-aos="fade-left">
+            <h3>What You Will Gain</h3>
+            <ul>
+                <li>Learn directly from experienced industry mentors</li>
+                <li>Hands-on practical training with real-time projects</li>
+                <li>Mock tests to strengthen technical knowledge</li>
+                <li>Mock interviews to boost confidence</li>
+                <li>Professional resume preparation guidance</li>
+                <li>Complete placement preparation support</li>
+                <li>Internship opportunities for practical exposure</li>
+            </ul>
+        </div>
+        <div class="col-md-6 order-md-1" data-aos="fade-right">
+            <img src="{% static "images/whatlearn.jpeg" %}"
+                 class="img-fluid rounded shadow" alt="Students Learning Online">
+        </div>
+    </div>
+
+    <!-- Our Commitment -->
+    <div class="row align-items-center">
+        <div class="col-md-6" data-aos="fade-right">
+            <h3>Our Commitment</h3>
+            <p>
+                We understand the financial challenges students may face. To ensure education 
+                is accessible to everyone, we provide flexible and easy EMI options.
+            </p>
+            <p>
+                Our mission is to bridge the gap between education and industry by offering 
+                structured guidance, career mentorship, and continuous support until students 
+                achieve their professional goals.
+            </p>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+            <img src="{% static "images/emi.png" %}"
+                 class="img-fluid rounded shadow" alt="Motivation and Support">
+        </div>
+    </div>
+</section>
+{% endblock %}

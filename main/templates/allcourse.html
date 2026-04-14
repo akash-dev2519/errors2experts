@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+{%load static%}
+<section class="auto-course-section">
+    <h2 class="section-title text-center mb-4">Our Courses</h2>
+
+    <div class="scroll-container">
+        <div class="scroll-track">
+
+            {% for course in allcourse %}
+            <div class="course-card">
+                {% if course.image %}
+                    <img src="{{ course.image.url }}" alt="{{ course.title }}">
+                {% else %}
+                    <img src="{% static 'main/images/no-image.png' %}" alt="No Image">
+                {% endif %}
+
+                <h4>{{ course.title }}</h4>
+                <p>{{ course.description|truncatewords:15 }}</p>
+
+                <div class="price-box">
+                    <span class="new-price">₹{{ course.price }}</span>
+                    {% if course.discount %}
+                    <span class="old-price">₹{{ course.discount }}</span>
+                    {% endif %}
+                </div>
+
+                <a href="{% url 'course_detail' course.id %}" class="explore-btn">
+                    Explore Course
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+  
+</div>
+
+</section>
+{%endblock%}

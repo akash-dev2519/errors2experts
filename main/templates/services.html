@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="services-section">
+    {% if messages %}
+  {% for message in messages %}
+    <div class="success-box">
+        <h3>🎉 Thank You for Registering!</h3>
+        <p>We have received your service request successfully.</p>
+        <p>Our team will contact you very soon.</p>
+
+        <blockquote>
+            "Success begins with the right decision — and you just made one."
+        </blockquote>
+    </div>
+  {% endfor %}
+{% endif %}
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card" data-aos="zoom-in">
+
+                    <div class="service-img">
+                        {% if service.image %}
+                            <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                        {% else %}
+                            <img src="{% static 'images/default-service.jpg' %}" alt="Service">
+                        {% endif %}
+                    </div>
+
+                    <div class="service-content">
+                        <h4>{{ service.title }}</h4>
+                        <p>{{ service.description|truncatewords:20 }}</p>
+
+                       <button class="register-btn btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#serviceBookingModal"
+        onclick="setServiceName('{{ service.title }}')">
+    Register Now
+</button>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+</section>
+
+<!-- Service Booking Modal -->
+<div class="modal fade" id="serviceBookingModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Service Registration</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form method="POST" action="{% url 'service_booking' %}">
+        {% csrf_token %}
+        <div class="modal-body">
+
+          <input type="hidden" name="service_name" id="serviceNameInput">
+
+          <div class="mb-3">
+            <input type="text" name="full_name" class="form-control" placeholder="Name of your organization" required>
+          </div>
+
+          <div class="mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+          </div>
+
+          <div class="mb-3">
+            <input type="text" name="mobile" class="form-control" placeholder="Mobile Number" required>
+          </div>
+
+          {% comment %} <div class="mb-3">
+            <input type="date" name="preferred_date" class="form-control">
+          </div> {% endcomment %}
+
+          <div class="mb-3">
+            <textarea name="message" class="form-control" placeholder="Your Requirement"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function setServiceName(serviceName) {
+    document.getElementById("serviceNameInput").value = serviceName;
+}
+</script>
+{% endblock %}

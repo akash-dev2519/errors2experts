@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="container mt-5">
+    <h2 class="text-center mb-4">Career Openings</h2>
+
+    {% if careers %}
+        {% for career in careers %}
+        <div class="career-row">
+
+            <!-- LEFT CARD -->
+            <div class="career-left">
+                <div class="mini-card">
+                    <h4>{{ career.role }}</h4>
+                    <span class="badge">{{ career.employment_type }}</span>
+                </div>
+            </div>
+
+            <!-- RIGHT CONTENT -->
+            <div class="career-right1">
+                <p>
+                    {{ career.job_description|truncatewords:25 }}
+                </p>
+
+                <a href="{% url 'career_detail' career.id %}" class="read-btn">
+                    Read More →
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="text-center">
+            <h4>🚀 Right Now No Openings</h4>
+        </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}
